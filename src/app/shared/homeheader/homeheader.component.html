@@ -1,0 +1,86 @@
+<header id="main-header">
+  <div class="main-header">
+     <div class="container-fluid">
+        <div class="row">
+           <div class="col-sm-12">
+              <nav class="navbar navbar-expand-lg navbar-light p-0">
+                 <a href="#" class="navbar-toggler c-toggler" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="navbar-toggler-icon" data-toggle="collapse">
+                       <span class="navbar-menu-icon navbar-menu-icon--top"></span>
+                       <span class="navbar-menu-icon navbar-menu-icon--middle"></span>
+                       <span class="navbar-menu-icon navbar-menu-icon--bottom"></span>
+                    </div>
+                 </a>
+                 <a class="navbar-brand" routerLink="//user"> <img class="img-fluid logo" src="../../../assets/StreamAssets/images/logo.png" loading="lazy"
+                    alt="streamit" /> </a>
+                    <a href="#" class="navbar-toggler c-toggler" data-toggle="collapse"
+                    data-target="#navbarSupportedContentx" aria-controls="navbarSupportedContentx"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="navbar-toggler" data-toggle="collapse">
+                      <i style="color: white;
+                      font-size: 25px;
+                      font-weight: 900;" class="ri-more-line"></i>
+                    </div>
+                 </a>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="menu-main-menu-container">
+                       <ul id="top-menu" class="navbar-nav ml-auto">
+                          <li class="menu-item active">
+                             <a routerLink="//user">Home</a>
+                          </li>
+                          <li class="menu-item">
+                             <a routerLink="/user/movie">Movies</a>
+                          </li>
+                          <li class="menu-item">
+                             <a routerLink="/user/series">Series</a>
+                          </li>
+                          <li class="menu-item">
+                             <a routerLink="/user/category">Category </a>
+                          </li>
+
+                          <li class="menu-item">
+                             <a >Pages</a>
+                             <ul class="sub-menu">
+
+                             <li class="menu-item"><a routerLink="/user/pricing">Pricing Plan</a></li>
+                                <li class="menu-item"><a routerLink="/user/watchlater">Watch Later</a></li>
+                                <li class="menu-item"><a routerLink="/user/allcrew">Crew</a></li>
+                                <li class="menu-item "><a routerLink="/user/about">About Us</a></li>
+                                <li class="menu-item"><a routerLink="/user/contact">Contact Us</a></li>
+
+                             </ul>
+                          </li>
+                       </ul>
+                    </div>
+                 </div>
+                 <div style="margin-right: -30%;" class="collapse navbar-collapse" id="navbarSupportedContentx">
+                    <ul class="d-flex align-items-center list-inline m-0">
+
+                       <li class="nav-item nav-icon" title="favourite">
+                          <a routerLink="/user/favourite" class="search-toggle" data-toggle="search-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1.25em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#f91a1a}</style><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+                            <span class="bg-danger dots"></span>
+                          </a>
+
+                       </li>
+                       <li class="nav-item nav-icon"><a (click)="logout()" class="search-toggle" data-toggle="search-toggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/></svg>                        <span class="bg-danger dots"></span>
+                      </a></li>
+                       <li class="nav-item nav-icon">
+                          <a  routerLink="/user/profile" class="iq-user-dropdown search-toggle p-0 d-flex align-items-center"
+                             data-toggle="search-toggle">
+                          <img src="../../../assets/StreamAssets/images/user/user.jpg" class="img-fluid avatar-40 rounded-circle" alt="user" loading="lazy">
+                          </a>
+
+                       </li>
+
+                    </ul>
+                 </div>
+              </nav>
+           </div>
+        </div>
+     </div>
+  </div>
+</header>

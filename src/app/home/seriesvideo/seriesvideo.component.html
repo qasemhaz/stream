@@ -1,0 +1,17 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "small" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true" template = " <img src='../../../assets/StreamAssets/images/loader-unscreen.gif' /> "></ngx-spinner>
+
+<section class="iq-main-slider site-video">
+  <div class="container-fluid">
+     <div class="row">
+        <div class="col-lg-12">
+           <div class="pt-0" id="qwe">
+              <video  id="my-video" class="video-js vjs-big-play-centered w-100" controls preload="auto"
+                 data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=QCGq1epI9pQ"}], "youtube": { "iv_load_policy": 1 } }'>
+                 <source src="../../../assets/Video/{{this.sourceService.GetxById.video}}" type="video/mp4" />
+                 <source src="MY_VIDEO.html" type="video/webm" />
+              </video>
+           </div>
+        </div>
+     </div>
+  </div>
+</section>

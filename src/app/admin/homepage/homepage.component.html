@@ -1,0 +1,109 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "small" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true" template = " <img src='../../../assets/StreamAssets/images/loader-unscreen.gif' /> "></ngx-spinner>
+<div class="wrapper">
+  <!-- Sidebar  -->
+<app-adminsidebar></app-adminsidebar>
+  <!-- TOP Nav Bar -->
+<app-adminheader></app-adminheader>
+  <!-- TOP Nav Bar END -->
+
+  <!-- Page Content  -->
+  <div id="content-page" class="content-page">
+     <div class="container">
+      <div class="container bootstrap snippets bootdey">
+        <h1 class="text-primary">Edit Home Page</h1>
+          <hr>
+          <form  [formGroup]="UpdateForm">
+      <div class="row">
+          <!-- left column -->
+
+          <div class="col-md-3">
+            <div class="text-center">
+              <img src="../../../assets/Image/{{this.homepageService.GetxById.image}}" class="avatar img-circle img-thumbnail" alt="avatar">
+              <input #file   (change)="upload(file)" type="file" >
+            </div>
+          </div>
+
+          <!-- edit form column -->
+          <div class="col-md-9 personal-info">
+            <div class="form-horizontal" role="form">
+              <div class="form-group">
+                <label class="col-lg-3 control-label"> Name</label>
+                <div class="col-lg-8">
+                  <input class="form-control" formControlName="namee" type="text" value="dey-dey">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Rate</label>
+                <div class="col-lg-8">
+                  <input class="form-control"formControlName="rate" type="text" value="bootdey">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Duartion</label>
+                <div class="col-lg-8">
+                  <input class="form-control"formControlName="duartion" type="text" value="">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Discreption</label>
+                <div class="col-lg-8">
+                  <input class="form-control"formControlName="descrip" type="text" value="janesemail@gmail.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Category</label>
+                <div class="col-lg-8">
+                  <input class="form-control"formControlName="cat" type="text" value="janesemail@gmail.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Author</label>
+                <div class="col-lg-8">
+                  <input class="form-control"formControlName="auth" type="text" value="janesemail@gmail.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Company</label>
+                <div class="col-lg-8">
+                  <input class="form-control"formControlName="company" type="text" value="janesemail@gmail.com">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-lg-3 control-label">Actor</label>
+                <div class="col-lg-8">
+                  <input class="form-control"formControlName="actor" type="text" value="janesemail@gmail.com">
+                </div>
+              </div>
+
+            </div>
+          </div>
+      </div>
+      <button style="background-color: #143e2b;color: white;"
+                       type="button"
+                       [disabled]="UpdateForm.invalid"
+                       value="Update"
+                       (click)="UpdateHo()" type="submit" class="btn btn-primary">Update</button>
+    </form>
+
+    </div>
+    <hr>
+     </div>
+  </div>
+</div>
+<!-- Wrapper END -->
+<div class="rtl-box">
+<button type="button" class="btn btn-light rtl-btn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 20 20" fill="white">
+  <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+  </svg>
+</button>
+<div class="rtl-panel">
+<ul class="modes">
+  <li class="dir-btn" data-mode="rtl" data-active="false"   data-value="ltr"><a href="#">LTR</a></li>
+  <li class="dir-btn" data-mode="rtl" data-active="true"   data-value="rtl"><a href="#">RTL</a></li>
+</ul>
+</div>
+</div>
+<!-- Footer -->
+<app-adminfooter></app-adminfooter>
+<!-- Footer END -->

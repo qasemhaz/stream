@@ -1,0 +1,87 @@
+<div class="wrapper"><ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "small" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true" template = " <img src='../../../assets/StreamAssets/images/loader-unscreen.gif' /> "></ngx-spinner>
+
+  <!-- Sidebar  -->
+<app-adminsidebar></app-adminsidebar>
+  <!-- TOP Nav Bar -->
+<app-adminheader></app-adminheader>
+  <!-- TOP Nav Bar END -->
+
+  <!-- Page Content  -->
+  <div id="content-page" class="content-page">
+     <div class="container">
+        <div class="row">
+           <div class="col-sm col-lg-12">
+
+              <div class="iq-card">
+                 <div class="iq-card-header d-flex justify-content-between">
+                    <div class="iq-header-title">
+                       <h4 class="card-title">Edit About Page</h4>
+                    </div>
+                 </div>
+                 <div class="iq-card-body" >
+                    <form [formGroup]="UpdateForm" style="width: 700px;">
+                       <div class="form-group">
+                          <label for="exampleInputText1">HEADER 1 </label>
+                          <input type="text" formControlName="header" class="form-control" id="exampleInputText1" >
+                       </div>
+                       <div class="form-group">
+                          <label for="exampleInputEmail3">PARAGRAPH 1</label>
+                          <input type="text" formControlName="par1" class="form-control" id="exampleInputEmail3" >
+                       </div>
+                       <div class="form-group">
+                          <label for="exampleInputurl">HEADER 2</label>
+                          <input type="text" formControlName="header2" class="form-control" id="exampleInputurl" >
+                       </div>
+                       <div class="form-group">
+                          <label for="exampleInputphone">PARAGRAPH 2</label>
+                          <input type="text" formControlName="par2" class="form-control" id="exampleInputphone" >
+                       </div>
+                       <div class="form-group">
+                          <label for="exampleInputNumber1">Number Of Branch</label>
+                          <input type="text" formControlName="branch" class="form-control" id="exampleInputNumber1" >
+                       </div>
+                       <div class="form-group">
+                          <label for="exampleInputPassword3">Number Of Employee</label>
+                          <input type="text" formControlName="employee" class="form-control" id="exampleInputPassword3"  >
+                       </div>
+                       <div class="form-group">
+                          <label for="exampleInputdate">Number Of Client</label>
+                          <input type="text" formControlName="clint" class="form-control date-input basicFlatpickr" id="exampleInputdate">
+                       </div>
+                       <div class="form-group">
+                          <label for="inputWeek">HEADER 3</label>
+                          <input type="text" formControlName="header3" class="form-control date-input basicFlatpickr" id="inputWeek" >
+                       </div>
+
+                       <button style="background-color: #143e2b;color: white;"
+                       type="button"
+                       [disabled]="UpdateForm.invalid"
+                       value="Update"
+                       (click)="UpdateAb()" type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                 </div>
+              </div>
+
+           </div>
+
+        </div>
+     </div>
+  </div>
+</div>
+<!-- Wrapper END -->
+<div class="rtl-box">
+<button type="button" class="btn btn-light rtl-btn">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 20 20" fill="white">
+  <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+  </svg>
+</button>
+<div class="rtl-panel">
+<ul class="modes">
+  <li class="dir-btn" data-mode="rtl" data-active="false"   data-value="ltr"><a href="#">LTR</a></li>
+  <li class="dir-btn" data-mode="rtl" data-active="true"   data-value="rtl"><a href="#">RTL</a></li>
+</ul>
+</div>
+</div>
+<!-- Footer -->
+<app-adminfooter></app-adminfooter>
+<!-- Footer END -->

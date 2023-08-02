@@ -1,0 +1,229 @@
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "small" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true" template = " <img src='../../../assets/StreamAssets/images/loader-unscreen.gif' /> "></ngx-spinner>
+<div class="wrapper">
+  <!-- Sidebar  -->
+  <app-adminsidebar></app-adminsidebar>
+  <!-- TOP Nav Bar -->
+  <app-adminheader></app-adminheader>
+  <!-- TOP Nav Bar END -->
+  <!-- Page Content  -->
+  <div id="content-page" class="content-page">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="iq-card">
+            <div class="iq-card-header d-flex justify-content-between">
+              <div class="iq-header-title">
+                <h4 class="card-title">Category Lists</h4>
+              </div>
+              <div class="iq-card-header-toolbar d-flex align-items-center">
+                <a class="btn btn-primary" style="color: white;font-weight: bold;" (click)="OpenDialog()"
+                  >Add Category</a
+                >
+              </div>
+            </div>
+            <div class="iq-card-body">
+              <div class="table-view">
+                <div>
+                 <span><i title="pdf" style="font-size: 32px;"  (click)="exportPdf()"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ba1212}</style><path d="M64 464H96v48H64c-35.3 0-64-28.7-64-64V64C0 28.7 28.7 0 64 0H229.5c17 0 33.3 6.7 45.3 18.7l90.5 90.5c12 12 18.7 28.3 18.7 45.3V288H336V160H256c-17.7 0-32-14.3-32-32V48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16zM176 352h32c30.9 0 56 25.1 56 56s-25.1 56-56 56H192v32c0 8.8-7.2 16-16 16s-16-7.2-16-16V448 368c0-8.8 7.2-16 16-16zm32 80c13.3 0 24-10.7 24-24s-10.7-24-24-24H192v48h16zm96-80h32c26.5 0 48 21.5 48 48v64c0 26.5-21.5 48-48 48H304c-8.8 0-16-7.2-16-16V368c0-8.8 7.2-16 16-16zm32 128c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H320v96h16zm80-112c0-8.8 7.2-16 16-16h48c8.8 0 16 7.2 16 16s-7.2 16-16 16H448v32h32c8.8 0 16 7.2 16 16s-7.2 16-16 16H448v48c0 8.8-7.2 16-16 16s-16-7.2-16-16V432 368z"/></svg></i></span>
+                 <span ><i title="excel" class="ri-file-excel-2-line" style="font-size: 32px;color: #4CAF50;" (click)="exportToExcel()"></i></span>
+                 <span ><i title="print" class="ri-printer-line" style="font-size: 32px;color: #bababa;" (click)="printPage()"></i></span>
+
+              </div><br>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+  <div class="mat-elevation-z8" >
+    <table mat-table [dataSource]="dataSource" matSort id="app"class="movie_table" >
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="    background-color: #1c1c1c;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;"> No. </th>
+        <td mat-cell *matCellDef="let row;let i=index" style="color: #8b8b8b;
+        font-weight: 500;
+        font-size: 15px;"> {{i+1}} </td>
+      </ng-container>
+
+
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="    background-color: #1c1c1c;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;"> Name </th>
+        <td mat-cell *matCellDef="let row" style="color: #8b8b8b;
+        font-weight: 500;
+        font-size: 15px;"> {{row.name}} </td>
+      </ng-container>
+
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="fruit">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="    background-color: #1c1c1c;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;"> Action </th>
+        <td mat-cell *matCellDef="let row">
+          <div class="flex align-items-center list-user-action">
+            <a
+              class="iq-bg-success"
+              data-toggle="tooltip"
+              data-placement="top"
+              title=""
+              data-original-title="Edit"
+              (click)="OpenUpdateDialog(row.id)"
+              ><i class="ri-pencil-line"></i
+            ></a>
+            <a
+              class="iq-bg-primary"
+              data-toggle="tooltip"
+              data-placement="top"
+              title=""
+              data-original-title="Delete"
+              (click)="OpenDeleteDialog(row.id)"
+              ><i class="ri-delete-bin-line"></i
+            ></a>
+          </div>
+           </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" style="    background-color: #3e3e3e;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;"></mat-paginator>
+  </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Wrapper END -->
+<div class="rtl-box">
+  <button type="button" class="btn btn-light rtl-btn">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="30px"
+      height="30px"
+      viewBox="0 0 20 20"
+      fill="white"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  </button>
+  <div class="rtl-panel">
+    <ul class="modes">
+      <li class="dir-btn" data-mode="rtl" data-active="false" data-value="ltr">
+        <a href="#">LTR</a>
+      </li>
+      <li class="dir-btn" data-mode="rtl" data-active="true" data-value="rtl">
+        <a href="#">RTL</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- Footer -->
+<app-adminfooter></app-adminfooter>
+<!-- Footer END -->
+
+<ng-template #createcategory>
+  <form
+    style="background-color: rgb(25 25 25); padding: 5px"
+    [formGroup]="CreateCategoryForm"
+    class="example-form"
+  >
+    <div>
+      <mat-form-field style="margin-top: 15px" class="example-full-width">
+        <mat-label>CategoryName</mat-label>
+        <input
+          type="text"
+          matInput
+          formControlName="name"
+          placeholder="Category Name"
+        />
+        <mat-error
+          *ngIf="CreateCategoryForm.controls['name'].hasError('required')"
+        >
+          category name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <input
+        style="background-color: #e20e02"
+        mat-dialog-close
+        type="button"
+        [disabled]="CreateCategoryForm.invalid"
+        value="Create"
+        (click)="CreateCategory()"
+      />
+    </div>
+  </form>
+</ng-template>
+<ng-template #updatecategory>
+  <div style="background-color: rgb(25 25 25); " mat-dialog-content>
+    <form
+
+      [formGroup]="UpdateCategoryForm"
+      class="example-form"
+    >
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Category Name</mat-label>
+          <input type="text" matInput formControlName="name" placeholder="Category Name" />
+          <mat-error
+            *ngIf="UpdateCategoryForm.controls['name'].hasError('required')"
+          >
+            course name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div></div>
+      <div>
+        <div mat-dialog-actions>
+          <input
+            style="background-color:#143e2b;color: white;"
+            type="button"
+            [disabled]="UpdateCategoryForm.invalid"
+            value="Update"
+            mat-dialog-close
+            (click)="UpdateCourse()"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<ng-template #deletecategory >
+  <div style="background-color: rgb(25 25 25); padding: 5px">
+  <h2 style="color: white;" mat-dialog-content>Would you like to delete this item?</h2>
+  <div mat-dialog-actions>
+    <input
+      style="background-color: #e20e02"
+      mat-dialog-close
+      value="Yes"
+      type="button"
+      class="btn btn-success"
+      (click)="DeleteCourse()"
+    />
+    <input style="background-color:#143e2b;color: white;"  mat-dialog-close value="No" type="button" class="btn btn-error" />
+  </div>
+</div>
+</ng-template>

@@ -1,0 +1,222 @@
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "small" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true" template = " <img src='../../../assets/StreamAssets/images/loader-unscreen.gif' /> "></ngx-spinner>
+
+<!-- loader Start -->
+
+     <!-- loader END -->
+     <!-- Header -->
+<app-homeheader></app-homeheader>
+     <!-- Header End -->
+     <div class="iq-breadcrumb-one  iq-bg-over iq-over-dark-50" style="background-image: url(../../../assets/StreamAssets/images/about-us/01.jpg);">
+      <div class="container-fluid">
+            <div class="row align-items-center">
+               <div class="col-sm-12">
+                  <nav aria-label="breadcrumb" class="text-center iq-breadcrumb-two">
+                        <h2 class="title">Pricing Plan 2</h2>
+                        <ol class="breadcrumb main-bg">
+                           <li class="breadcrumb-item"><a href="#">Home</a></li>
+                           <li class="breadcrumb-item active">Pricing Plan 2</li>
+                        </ol>
+                  </nav>
+               </div>
+            </div>
+      </div>
+   </div>
+     <!-- Main container -->
+
+   <div class="site-content-contain">
+      <div id="content" class="site-content">
+         <div id="primary" class="content-area">
+            <main id="main" class="site-main">
+               <div class="container">
+                  <div class="row" style="background-color: #191919;">
+                     <div style="background-color: #191919;" class="col-lg-12 col-sm-12">
+                           <div style="background-color: #191919;" class="iq-pricing-card-two">
+                              <div style="background-color: #191919;" class="table-responsive iq-pricing pt-2">
+
+                                <table style="background-color: #191919;    font-size: 1em;" id="my-table" class="table" data-active="premium">
+                                       <thead>
+                                          <tr style="background-color: #191919;">
+                                             <th class="text-center iq-price-head"></th>
+                                                <th class="text-center iq-price-head free">
+                                                   <div class="iq-price-box">
+                                                      <span class="">Basic</span>
+                                                   </div>
+                                                </th>
+                                                <th class="text-center iq-price-head premium">
+                                                   <div class="iq-price-box">
+                                                      <span class="">Pro</span>
+                                                   </div>
+                                                </th>
+                                                <th class="text-center iq-price-head basic">
+                                                   <div class="iq-price-box">
+                                                      <span class="">Premium</span>
+                                                   </div>
+                                                </th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                       <tr>
+                                          <th class="text-left" scope="row"> Ad Free Entertainment</th>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-times-circle"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-check-circle-o"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-times-circle"></i>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <th class="text-left" scope="row"> American Tv Shows</th>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-times-circle"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-check-circle-o"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-check-circle-o"></i>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <th class="text-left" scope="row"> Hollywood Movies</th>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-times-circle"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-check-circle-o"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-check-circle-o"></i>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <th class="text-left" scope="row"> New Movies</th>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-times-circle"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-check-circle-o"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-check-circle-o"></i>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <th class="text-left" scope="row"> Streamit Special</th>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-times-circle"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-check-circle-o"></i>
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             <i class="fa fa-times-circle"></i>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <th class="text-left" scope="row"> Video Quality</th>
+                                          <td class="text-center iq-child-cell">
+                                             SD(480p)
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             FHD(1080p)
+                                          </td>
+                                          <td class="text-center iq-child-cell">
+                                             HD(720p)
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                              <div class="iq-price-bottom">
+                                 <div class="iq-select-price row">
+                                    <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let i of pricingService.GetAllx">
+                                       <div id="ww" (click)="openModal(i.id)" class="iq-price-rate-wrap" >
+                                          <i class="fa fa-check-square"></i>
+                                             <div class="iq-price-label">
+                                                <span class="type1">{{i.name}}</span>
+                                                <div class="iq-price-rate text-white d-flex align-items-end justify-content-center flex-wrap">
+                                                   <h3 class="mr-2"style="   font-size: 3em;">${{i.price}}</h3>
+                                                   <small>{{i.periodd}} / Month</small></div>
+                                             </div>
+                                       </div>
+                                    </div>
+
+                                 </div>
+
+                              </div>
+                           </div>
+                     </div>
+                  </div>
+               </div>
+            </main>
+        </div>
+      </div>
+   </div>
+     <!-- Main container End -->
+   <div class="rtl-box">
+      <button type="button" class="btn btn-light rtl-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 20 20" fill="white">
+            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+            </svg>
+      </button>
+      <div class="rtl-panel">
+         <ul class="modes">
+            <li class="dir-btn"  data-mode="rtl" data-active="false" data-value="ltr"><a href="#">LTR</a></li>
+           <li class="dir-btn" data-mode="rtl" data-active="true"   data-value="rtl"><a href="#">RTL</a></li>
+         </ul>
+      </div>
+   </div>
+  <!-- Footer Start -->
+<app-homefooter></app-homefooter>
+ <!-- Footer End -->
+   <!-- MainContent End-->
+
+
+   <ng-template #payment>
+    <div class="card">
+      <div class="card-top border-bottom text-center">
+          <span id="logo">STREAMIT.COM</span>
+      </div>
+      <div class="card-body">
+          <div class="row upper">
+              <span><i class="fa fa-check-circle-o"></i> Shopping bag</span>
+              <span><i class="fa fa-check-circle-o"></i> Order details</span>
+              <span id="payment"><span id="three">2</span>Pricing Plan</span>
+          </div>
+          <div class="row">
+              <div class="col-md-7">
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+
+              </div>
+              <div class="col-md-5">
+                  <div style="    background-color: #1a1a1a;
+                  "  class="right border">
+                      <div class="header">Pricing Plan</div>
+                      <p>INFO</p>
+                      <div class="row item">
+                        <div class="iq-price-rate-wrap" >
+                          <i class="fa fa-check-square"></i>
+                             <div class="iq-price-label">
+                                <span class="type1">{{pricingService.GetxById.name}}</span>
+                                <div class="iq-price-rate text-white d-flex align-items-end justify-content-center flex-wrap">
+                                   <h3 class="mr-2"style="   font-size: 2em;">${{pricingService.GetxById.price}}</h3>
+                                   <small>{{pricingService.GetxById.periodd}} / Month</small></div>
+                             </div>
+                       </div>
+                      </div>
+                      <hr>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <div>
+    </div>
+    </div>
+
+  </ng-template>

@@ -1,0 +1,205 @@
+<!-- Header --><ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "small" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true" template = " <img src='../../../assets/StreamAssets/images/loader-unscreen.gif' /> "></ngx-spinner>
+
+<app-homeheader></app-homeheader>
+<!-- Header End -->
+<!-- MainContent -->
+<div class="main-content">
+  <div class="show-movie">
+      <div class="container-fluid">
+        <div class="banner-wrapper overlay-wrapper iq-main-slider " style="background-image: url(../../../assets/Image/{{this.seriesService.GetxById.image}});">
+            <div class="banner-caption">
+              <div class="movie-detail">
+                  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="trending-info p-0">
+                          <h1 class="trending-text big-title text-uppercase mt-0" style="    font-size: 30px;
+                          font-weight: 900;">{{this.seriesService.GetxById.name}}</h1>
+                          <div class="slider-ratting d-flex align-items-center" data-animation-in="fadeInLeft">
+                              <ul
+                                class="ratting-start p-0 m-0 list-inline text-primary d-flex align-items-center justify-content-left">
+                                <li *ngFor="let a of rate(this.seriesService.GetxById.rate); let index = index">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-star-half" aria-hidden="true"></i>
+                                </li>
+                              </ul>
+                              <span class="text-white ml-3">{{this.seriesService.GetxById.rate}}.5 (imdb)</span>
+                          </div>
+                          <ul class="p-0 mt-2 list-inline d-flex flex-wrap movie-content">
+                            <ng-container *ngFor="let i of this.categoryService.GetAllCategoryv">
+                            <li *ngIf="this.seriesService.GetxById.categoryid == i.id" class="trending-list"><a class="text-primary title" (click)="NavigateCat(i.id)">{{i.name}}</a></li>
+                            </ng-container>
+                        </ul>
+                          <div class="d-flex flex-wrap align-items-center text-white text-detail sesson-date">
+                              <span class="trending-year">{{this.seriesService.GetxById.productionyear | date}}</span>
+                          </div>
+                          <div class="trending-dec">
+                              <p class="m-0">{{this.seriesService.GetxById.discreption}}.</p>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="position-relative">
+                  <a
+                    class="d-flex align-items-center">
+                    <div class="play-button">
+                        <i class="ri-play-fill"></i>
+                    </div>
+                    <h4 class="w-name text-white font-weight-700">Watch latest Episode</h4>
+                  </a>
+              </div>
+              <div class="row">
+                  <div class="col-12 mt-auto mb-auto">
+                    <ul class="list-inline p-0 m-0 share-icons music-play-lists">
+                        <li class="share mb-0">
+                          <span><i class="ri-share-fill"></i></span>
+                          <div class="share-box">
+                              <div class="d-flex align-items-center">
+                                <a href="#" class="share-ico"><i class="ri-facebook-fill"></i></a>
+                                <a href="#" class="share-ico"><i class="ri-twitter-fill"></i></a>
+                                <a href="#" class="share-ico"><i class="ri-links-fill"></i></a>
+                              </div>
+                          </div>
+                        </li>
+                        <li class="mb-0">
+                          <span><i class="ri-heart-fill" (click)="Add(this.seriesService.GetxById.id)"></i></span>
+                        </li>
+                        <li class="mb-0">
+                          <span><i class="ri-add-line" (click)="Later(this.seriesService.GetxById.id)"></i></span>
+                        </li>
+                    </ul>
+
+                  </div>
+              </div>
+            </div>
+            <div class="trailor-video  text-sm-right p-3  col-md-3 col-12">
+              <a href="https://youtu.be/OFlBh_eUsjA" target="_blank"
+                  class="video-open playbtn block-images position-relative playbtn_thumbnail ">
+                  <img width="1920" height="1080" src="../../../assets/Image/{{this.seriesService.GetxById.image}}"
+                    class="attachment-medium-large size-medium-large wp-post-image" alt=""  loading="lazy"> <span class="content btn btn-transparant iq-button">
+                    <i class=" mr-2"></i>
+                    <span>Trailer Link</span>
+                  </span>
+              </a>
+            </div>
+        </div>
+        <section class="show-movie-section">
+
+            <div class="trending-custom-tab">
+              <div class="tab-title-info position-relative">
+                  <ul class="trending-pills nav nav-pills text-center iq-ltr-direction" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active show m-0" data-toggle="pill" href="#episodes" role="tab"
+                          aria-selected="true">Episodes</a>
+                    </li>
+
+                  </ul>
+              </div>
+              <div class="tab-content" id="nav-tabContent">
+                  <div id="episodes" class=" tab-pane animated fadeInUp active show">
+                    <div class="row episodes list-inline p-0 mb-0 iq-rtl-direction ">
+
+                      <ng-container *ngFor="let item of this.episodeService.GetAllx;let index = index">
+                        <ng-container *ngFor="let i of this.sourceService.GetAllx">
+                          <ng-container *ngIf="item.seriesid==this.seriesService.GetxById.id">
+
+                      <div *ngIf="item.id==i.episodeid" class="e-item col-lg-3 col-sm-12 col-md-6">
+                          <div   class="block-image position-relative">
+                              <a href="show-details.html">
+                                <img src="../../../assets/Image/{{this.seriesService.GetxById.image}}" class="img-fluid img-zoom" alt="" loading="lazy">
+                              </a>
+                              <div class="episode-number">E{{item.episodenum}}</div>
+                              <div class="episode-play-info">
+                                <div class="episode-play">
+                                    <a
+                                    (click)="NavigateVid(i.id)">
+                                      <i class="ri-play-fill" style="color: red;"></i>
+                                    </a>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="epi-desc p-3">
+                              <div class="d-flex align-items-center justify-content-between mb-3">
+                                <span class="text-white rel-date">October {{i.dateadded}}</span>
+                                <span class="text-primary run-time">45min</span>
+                              </div>
+
+                          </div>
+                        </div>
+                                 </ng-container>
+                        </ng-container>
+                      </ng-container>
+                    </div>
+
+                  </div>
+
+              </div>
+            </div>
+        </section>
+        <div id="iq-favorites" class="s-margin detail-cast-list iq-rtl-direction starring">
+          <div>
+             <div class="row m-0">
+                <div class="col-sm-12 overflow-hidden p-0">
+                   <div class="iq-main-header d-flex align-items-center justify-content-between iq-ltr-direction">
+                         <h4 class="main-title">Starring</h4>
+                   </div>
+                </div>
+             </div>
+             <ul class="inner-slider list-inline row p-0  iq-ltr-direction">
+               <ng-container *ngFor="let item of this.crewseriesmovieService.GetAllx">
+                 <ng-container *ngFor="let i of this.crewService.GetAllx">
+                   <ng-container *ngIf="item.seriesid==this.seriesService.GetxById.id">
+
+                <li *ngIf="item.crewid==i.id" class=" slide-item iq-ltr-direction col-xl-3 col-lg-4 col-md-4 col-6">
+                 <div class="cast-images position-relative row mx-0">
+                         <div class="col-sm-4 col-12 img-box p-0">
+                            <img src="../../../assets/Image/{{i.image}}" class="person__poster--image img-fluid" alt="image" loading="lazy">
+                         </div>
+                         <div class="col-sm-8 col-12 block-description starring-desc ">
+                            <h6 class="iq-title">
+                               <a (click)="NavigateCrew(i.id)" tabindex="0">
+                                  {{i.name}} </a>
+                            </h6>
+                            <div class="video-time d-flex align-items-center my-2">
+                             <ng-container *ngFor="let n of this.roleService.GetAllx">
+                               <span *ngIf="i.roleid==n.id"  class="text-white">{{n.name}}</span>
+                             </ng-container>
+                            </div>
+                         </div>
+                   </div>
+
+                </li>
+               </ng-container>
+               </ng-container>
+               </ng-container>
+             </ul>
+       </div>
+    </div>
+      </div>
+  </div>
+</div>
+<div class="rtl-box">
+  <button type="button" id="flip" class="btn btn-light rtl-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 20 20" fill="white">
+        <path fill-rule="evenodd"
+            d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+            clip-rule="evenodd" />
+      </svg>
+  </button>
+  <div class="rtl-panel" id="panel">
+      <ul class="modes">
+        <li class="dir-btn" data-mode="rtl" data-active="false" data-value="ltr"><a href="#">LTR</a></li>
+        <li class="dir-btn" data-mode="rtl" data-active="true" data-value="rtl"><a href="#">RTL</a></li>
+      </ul>
+  </div>
+</div>
+<app-homefooter></app-homefooter>
+<!-- MainContent End-->
+<!-- back-to-top -->
+<div id="back-to-top">
+  <a class="top" href="#top" id="top"> <i class="fa fa-angle-up"></i> </a>
+</div>
+<!-- back-to-top End -->

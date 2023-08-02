@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%;scroll-behavior:smooth}
+body {background-color: #141414;color: white; margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body a{
+  text-decoration: none;
+}
+.btn-primary{
+  background-color: #e20e02;
+  border-color: #e20e02;
+}
+

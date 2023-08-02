@@ -1,0 +1,355 @@
+ <!-- Header --><ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "small" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true" template = " <img src='../../../assets/StreamAssets/images/loader-unscreen.gif' /> "></ngx-spinner>
+
+<app-homeheader></app-homeheader>
+   <!-- Header End -->
+   <!-- Banner Start -->
+   <section class="iq-main-slider site-video">
+    <div class="container-fluid">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="pt-0" id="qwe">
+              <ng-container *ngFor="let item of sourceService.GetAllx">
+                <video *ngIf="item.movieid==this.movieService.GetxById.id" id="my-video" class="video-js vjs-big-play-centered w-100" controls preload="auto"
+                   data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=QCGq1epI9pQ"}], "youtube": { "iv_load_policy": 1 } }'>
+                   <source src="../../../assets/Video/{{item.video}}" type="video/mp4" />
+                   <source src="MY_VIDEO.html" type="video/webm" />
+                </video>
+              </ng-container>
+
+             </div>
+          </div>
+       </div>
+    </div>
+ </section>
+ <!-- Banner End -->
+ <!-- MainContent -->
+ <div class="main-content movi ">
+    <div class="container-fluid">
+       <div class="row">
+          <div class="col-lg-12">
+             <div class="trending-info mt-4 pt-0 pb-4">
+                <div class="row" >
+                   <div class="col-md-9 col-12  mb-auto">
+                      <div class="d-md-flex">
+                         <h3 class="trending-text big-title text-uppercase mt-0 fadeInLeft animated"
+                            data-animation-in="fadeInLeft" data-delay-in="0.6"
+                            style="opacity: 1; animation-delay: 0.6s;font-size: 30px;font-weight: 900;">{{this.movieService.GetxById.name}}
+                         </h3>
+                         <div class="slider-ratting d-flex align-items-center ml-md-3 ml-0">
+                            <ul
+                               class="ratting-start p-0 m-0 list-inline text-primary d-flex align-items-center justify-content-left">
+                               <li *ngFor="let a of rate(this.movieService.GetxById.rate); let index = index"><i class="fa fa-star" aria-hidden="true"></i></li>
+                               <li><i class="fa fa-star-half" aria-hidden="true"></i></li>
+                            </ul>
+                            <span class="text-white ml-2">{{this.movieService.GetxById.rate}}.3 (lmdb)</span>
+                         </div>
+                      </div>
+                      <ul class="p-0 mt-2 list-inline d-flex flex-wrap movie-content">
+                         <li *ngFor="let i of this.categoryService.GetAllCategoryv"  class="trending-list">
+                          <a *ngIf="this.movieService.GetxById.categoryid==i.id" class="text-primary title"  (click)="NavigateCat(i.id)">{{i.name}}</a></li>
+                      </ul>
+                      <div class="d-flex flex-wrap align-items-center text-white text-detail flex-wrap mb-4">
+                         <span class="badge badge-secondary font-size-16">G</span>
+                         <span class="ml-3 font-Weight-500 genres-info">{{this.movieService.GetxById.duraation}}</span>
+                         <span class="trending-year trending-year-list font-Weight-500 genres-info"> {{this.movieService.GetxById.productionyear | date}}
+                         </span>
+                         <span
+                            class="trending-year trending-year-list single-view-count font-Weight-500 genres-info"><i
+                               class="fa fa-eye"></i>{{this.movieService.GetxById.numofviews}} views</span>
+                      </div>
+                      <ul class="list-inline p-0 m-0 share-icons music-play-lists mb-1">
+                         <li class="share">
+                            <span><i class="ri-share-fill"></i></span>
+                            <div class="share-box">
+                               <div class="d-flex align-items-center">
+                                  <a href="#" class="share-ico"><i class="ri-facebook-fill"></i></a>
+                                  <a href="#" class="share-ico"><i class="ri-twitter-fill"></i></a>
+                                  <a href="#" class="share-ico"><i class="ri-links-fill"></i></a>
+                               </div>
+                            </div>
+                         </li>
+                         <li><span><i class="ri-heart-fill" (click)="Add(this.movieService.GetxById.id)"></i></span></li>
+                         <li><span><i class="ri-add-line" (click)="Later(this.movieService.GetxById.id)"></i></span></li>
+                      </ul>
+                   </div>
+                   <div class="trailor-video col-md-3 col-12 mt-lg-0 mt-4 mb-md-0 mb-1 text-lg-right">
+                      <a href="https://www.youtube.com/watch?v=QCGq1epI9pQ" target="_blank"
+                         class="video-open playbtn block-images position-relative playbtn_thumbnail">
+                         <img width="1920" height="1080" src="../../../assets/Image/{{this.movieService.GetxById.image}}"
+                            class="attachment-medium-large size-medium-large wp-post-image" alt="" loading="lazy"
+                            sizes="(min-width: 960px) 75vw, 100vw" />
+                         <span class="content btn btn-transparant iq-button">
+                            <i class="fa fa-play mr-2"></i>
+                            <span>Trailer Link</span>
+                         </span>
+                      </a>
+                   </div>
+                </div>
+             </div>
+
+             <div class="streamit-content-details trending-info g-border iq-rtl-direction">
+                <ul class="trending-pills-header d-flex nav nav-pills align-items-center text-center  mb-5 justify-content-center"
+                   role="tablist">
+                   <li class="nav-item">
+                      <a class="nav-link active show" data-toggle="pill" href="#dectripton-1" role="tab"
+                         aria-selected="true">Description</a>
+                   </li>
+                   <li class="nav-item">
+                      <a class="nav-link" data-toggle="pill" href="#reviw-1" role="tab" aria-selected="false">
+                         Review</a>
+                   </li>
+                   <li class="nav-item">
+                      <a class="nav-link" data-toggle="pill" href="#sourse-1" role="tab"
+                         aria-selected="false">Sources</a>
+                   </li>
+                </ul>
+                <div class="tab-content">
+                   <div id="dectripton-1" class="tab-pane fade active show" role="tabpanel">
+                      <div class="description-content">
+                         <p>{{this.movieService.GetxById.discreption}}.</p>
+                      </div>
+                   </div>
+                   <div id="reviw-1" class="tab-pane fade" role="tabpanel">
+                      <div id="reviews" class="streamit-reviews">
+
+                         <div id="review_form_wrapper">
+                            <div id="review_form">
+                               <div id="respond" class="comment-respond">
+
+                                  <form [formGroup]="CreateForm" class="comment-form">
+
+
+                                     <p class="comment-form-comment p-0 mb-3 mt-0">
+                                        <label for="comment">Your review&nbsp;<span
+                                              class="required">*</span></label><textarea id="comment" formControlName="comments"
+                                           cols="45" rows="8" required=""></textarea>
+                                     </p>
+
+                                     <p class="form-submit">
+                                        <button name="submit" [disabled]="CreateForm.invalid" (click)="AddRev()" type="submit" id="submit"
+                                           class="btn btn-hover iq-button" value="Submit">
+                                           <span><i class="ri-play-fill"></i>Submit</span>
+                                        </button>
+                                     </p>
+                                  </form>
+                               </div>
+<br>
+                            </div>
+<br>
+                            <div class="cast-details">
+
+                              <ul class="trending-pills treading-heading-tab d-flex nav nav-pills align-items-center text-center m-0 mb-3" role="tablist">
+
+                                 <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="pill" href="#movie" role="tab" aria-selected="true">Last Reviews</a>
+                                 </li>
+
+                              </ul>
+                              <div class="tab-content cast-person-list" id="cast-person-list">
+
+                                 <div  id="movie" active class="tab-pane fade active show streamit_cast_list" role="tabpanel" data-attibute="movie" data-current-page="1" data-options="infinite_scroll">
+                                    <table class="credit_group animated fadeInUp">
+                                       <tbody class="cast-related-list">
+
+                                        <ng-container *ngFor="let item of this.reviewService.GetAllx">
+                                          <ng-container *ngFor="let i of this.userService.GetAllx">
+
+                                          <tr class="trending-pills" *ngIf="item.idmovie==this.movieService.GetxById.id &&item.iduser==i.id ">
+                                             <td class="image"><img src="../../../assets/Image/{{i.image}}" class="img-fluid" alt="wp-rig" loading="lazy"></td>
+                                             <td class="content">
+                                                <a  class="text-primary">
+                                                  {{i.name}} </a>
+
+                                             </td>
+                                             <td class="year">{{item.comments}}</td>
+                                          </tr>
+                                        </ng-container>
+                                      </ng-container>
+
+                                       </tbody>
+                                    </table>
+                                 </div>
+
+
+                              </div>
+                           </div>
+
+
+                         </div>
+                         <div class="clear"></div>
+                      </div>
+                   </div>
+
+
+
+                   <div id="sourse-1" class="tab-pane fade" role="tabpanel">
+                      <div class="source-list-content">
+                         <table class="movie-sources sources-table">
+                            <thead class="trending-pills">
+                               <tr >
+                                  <th class="genres-table-heading">Links</th>
+                                  <th class="genres-table-heading">Quality</th>
+                                  <th class="genres-table-heading">Player</th>
+                                  <th class="genres-table-heading">Date Added</th>
+                               </tr>
+                            </thead>
+                            <tbody class="trending-pills">
+                               <tr *ngFor="let item of this.sourceService.GetAllx">
+                                <ng-container *ngIf="item.movieid==this.movieService.GetxById.id">
+                                  <td>
+                                     <a
+                                        class="play-source movie-play-source btn-hover iq-button"><i
+                                           class="ri-play-fill"></i>
+                                        Play Now
+                                     </a>
+                                  </td>
+                                  <td>{{item.quality}}</td>
+                                  <td>{{item.player}}</td>
+                                  <td>{{item.dateadded}}</td>
+                                </ng-container>
+                               </tr>
+
+                            </tbody>
+                         </table>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div id="iq-favorites" class="s-margin detail-cast-list iq-rtl-direction starring">
+       <div class="container-fluid">
+          <div class="row m-0">
+             <div class="col-sm-12 overflow-hidden p-0">
+                <div class="iq-main-header d-flex align-items-center justify-content-between iq-ltr-direction">
+                      <h4 class="main-title">Starring</h4>
+                </div>
+             </div>
+          </div>
+          <ul class="inner-slider list-inline row p-0  iq-ltr-direction">
+            <ng-container *ngFor="let item of this.crewseriesmovieService.GetAllx">
+              <ng-container *ngFor="let i of this.crewService.GetAllx">
+                <ng-container *ngIf="item.movieid==this.movieService.GetxById.id">
+
+             <li *ngIf="item.crewid==i.id" class=" slide-item iq-ltr-direction col-xl-3 col-lg-4 col-md-4 col-6">
+              <div class="cast-images position-relative row mx-0">
+                      <div class="col-sm-4 col-12 img-box p-0">
+                         <img src="../../../assets/Image/{{i.image}}" class="person__poster--image img-fluid" alt="image" loading="lazy">
+                      </div>
+                      <div class="col-sm-8 col-12 block-description starring-desc ">
+                         <h6 class="iq-title">
+                            <a  (click)="NavigateCrew(i.id)" tabindex="0">
+                               {{i.name}} </a>
+                         </h6>
+                         <div class="video-time d-flex align-items-center my-2">
+                          <ng-container *ngFor="let n of this.roleService.GetAllx">
+                            <span *ngIf="i.roleid==n.id"  class="text-white">{{n.name}}</span>
+                          </ng-container>
+                         </div>
+                      </div>
+                </div>
+
+             </li>
+            </ng-container>
+            </ng-container>
+            </ng-container>
+          </ul>
+    </div>
+ </div>
+
+ <section class="s-margin iq-rtl-direction">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 overflow-hidden">
+            <div class="d-flex align-items-center justify-content-between">
+                <h4 class="main-title ">Recommended </h4>
+            </div>
+        </div>
+    </div>
+    <!-- Swiper -->
+    <div class="favourite-slider">
+      <div  class="swiper pt-2 pt-md-4 pt-lg-4 iq-rtl-direction" data-swiper="common-slider">
+         <ul class=" m-0 p-0">
+           <owl-carousel-o [options]="customOptions" >
+             <ng-container *ngFor="let item of this.movieService.GetAllx">
+             <ng-template carouselSlide >
+
+           <li style="padding: 5px;" class="swiper-slide slide-item">
+               <div class="block-images position-relative">
+                  <div class="img-box">
+                     <img src="../../../assets/Image/{{item.image}}" class="img-fluid" alt="">
+                  </div>
+                  <div class="block-description">
+                     <h6 class="iq-title"><a (click)="Navigate(item.id)">{{item.name}}</a></h6>
+                     <div class="movie-time d-flex align-items-center my-2">
+                        <span class="text-white">{{item.duraation}}</span>
+                     </div>
+                     <div class="hover-buttons">
+                        <a (click)="Navigate(item.id)" role="button" class="btn btn-hover">
+                           <i class="fa fa-play mr-1" aria-hidden="true"></i>
+                           Watch Now
+                        </a>
+                     </div>
+                  </div>
+                  <div class="block-social-info">
+                     <ul class="list-inline p-0 m-0 music-play-lists">
+                        <li class="share">
+                           <span><i class="ri-share-fill"></i></span>
+                           <div class="share-box">
+                              <div class="d-flex align-items-center">
+                                 <a href="https://www.facebook.com/sharer?u=https://iqonic.design/wp-themes/streamit_wp/movie/shadow/"
+                                    target="_blank" rel="noopener noreferrer" class="share-ico" tabindex="0"><i
+                                       class="ri-facebook-fill"></i></a>
+                                 <a href="https://twitter.com/intent/tweet?text=Currentlyreading"
+                                    target="_blank" rel="noopener noreferrer" class="share-ico" tabindex="0"><i
+                                       class="ri-twitter-fill"></i></a>
+                                 <a href="#"
+                                    data-link="https://iqonic.design/wp-themes/streamit_wp/movie/shadow/"
+                                    class="share-ico iq-copy-link" tabindex="0"><i
+                                       class="ri-links-fill"></i></a>
+                              </div>
+                           </div>
+                        </li>
+                        <li>
+                           <span><i class="ri-heart-fill" (click)="Add(item.id)"></i></span>
+                           <span class="count-box">0</span>
+                        </li>
+                        <li><span><i class="ri-add-line" (click)="Later(item.id)"></i></span></li>
+
+                     </ul>
+                  </div>
+               </div>
+            </li>
+             </ng-template>
+           </ng-container>
+
+           </owl-carousel-o>
+         </ul>
+         <div class="swiper-button-prev"></div>
+         <div class="swiper-button-next"></div>
+      </div>
+   </div>
+    </div>
+</section>
+
+
+
+ </div>
+ <div class="rtl-box">
+    <button type="button" class="btn btn-light rtl-btn">
+       <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 20 20" fill="white">
+          <path fill-rule="evenodd"
+             d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z"
+             clip-rule="evenodd" />
+       </svg>
+    </button>
+    <div class="rtl-panel">
+       <ul class="modes">
+          <li class="dir-btn" data-mode="rtl" data-active="false" data-value="ltr"><a href="#">LTR</a></li>
+          <li class="dir-btn" data-mode="rtl" data-active="true" data-value="rtl"><a href="#">RTL</a></li>
+       </ul>
+    </div>
+ </div>
+<app-homefooter></app-homefooter>
+ <!-- MainContent End-->

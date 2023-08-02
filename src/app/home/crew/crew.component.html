@@ -1,0 +1,145 @@
+<!-- Header --><ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "small" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true" template = " <img src='../../../assets/StreamAssets/images/loader-unscreen.gif' /> "></ngx-spinner>
+
+<app-homeheader></app-homeheader>
+<main id="main" class="site-main">
+  <div class="container-fluid">
+     <div class="row">
+           <div class="col-md-3 col-12">
+              <img src="../../../assets/Image/{{this.crewService.GetxById.image}}" class="img-fluid" alt="" loading="lazy">
+              <div class="align-items-center trending-list flex-wrap">
+                 <h3 class="trending-text text-capitalize mt-5 mb-3">Personal Info</h3>
+                 <div class="list-inline p-0 mb-4 share-icons music-play-lists profile-social-lists">
+                       <a href="{{this.crewService.GetxById.facebook}}" target="_blank" class="share-ico  text-primary mr-2"><i class="ri-facebook-fill"></i></a>
+                       <a href="{{this.crewService.GetxById.twiter}}" target="_blank" rel="noopener noreferrer" class="share-ico text-primary  mr-2"><i class="ri-twitter-fill"></i></a>
+                       <a href="{{this.crewService.GetxById.instagram}}" target="_blank"  class="share-ico iq-copy-link mr-2 text-primary "><i class="ri-instagram-fill"></i></a>
+                 </div>
+              </div>
+              <div class="person-details">
+                 <ng-container *ngFor="let item of this.roleService.GetAllx">
+                <div class="" *ngIf="this.crewService.GetxById.roleid == item.id">
+                       <h4  class="single-person__sidebar-title">Known For</h4>
+                          {{item.name}}
+                 </div>
+                </ng-container>
+                 <div class="">
+                       <h4 class="single-person__sidebar-title">Birth Date</h4>
+                       {{this.crewService.GetxById.birthdate | date}}
+                 </div>
+                 <div class="">
+                       <h4 class="single-person__sidebar-title ">Place of Birth</h4>
+                       {{this.crewService.GetxById.placeofbirth}}
+                 </div>
+                 <div class="">
+                       <h4 class="single-person__sidebar-title">Age</h4>
+                       {{this.crewService.GetxById.age}}
+                 </div>
+              </div>
+           </div>
+           <div class="col-md-9 col-12">
+              <h3 class="trending-text big-title text-uppercase mt-0" style="font-size: 30px; font-weight: 900;">{{this.crewService.GetxById.name}}</h3>
+              <div class="trending-dec w-100 movie-top-space trending-info g-border">
+
+                 <p>{{this.crewService.GetxById.descip}}</p>
+                 </div>
+                 <div class="iq-main-header">
+                       <h4 class="main-title">Most Viewer</h4>
+                 </div>
+                 <!-- Swiper -->
+                 <div class="favourite-slider">
+                       <div  class="swiper pt-2 pt-md-4 pt-lg-4 iq-rtl-direction " data-swiper="common-slider">
+                          <ul class=" m-0 p-0">
+                            <owl-carousel-o [options]="customOptions" >
+                              <ng-container *ngFor="let item of this.crewseriesmovieService.GetAllx">
+                                <ng-container *ngFor="let i of this.movieService.GetAllx">
+                                <ng-container *ngIf="this.crewService.GetxById.id == item.crewid && i.id == item.movieid">
+                              <ng-template carouselSlide >
+                            <li class="swiper-slide slide-item">
+                                <div class="block-images position-relative ">
+                                   <div class="img-box">
+                                      <img src="../../../assets/Image/{{i.image}}" class="img-fluid" alt="">
+                                   </div>
+                                   <div class="block-description">
+                                      <h6 class="iq-title"><a (click)="Navigate(i.id)">{{i.name}}</a></h6>
+                                   </div>
+                                </div>
+                             </li>
+                            </ng-template>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
+
+                          </owl-carousel-o>
+                          </ul>
+                          <div class="swiper-button-prev"></div>
+                          <div class="swiper-button-next"></div>
+                    </div>
+                 </div>
+                 <div class="cast-details">
+                    <div class="iq-main-header d-flex align-items-center justify-content-between iq-ltr-direction">
+                       <h4>Acting  </h4>
+                    </div>
+                    <ul class="trending-pills treading-heading-tab d-flex nav nav-pills align-items-center text-center m-0 mb-3" role="tablist">
+
+                       <li class="nav-item">
+                          <a class="nav-link active" data-toggle="pill" href="#movie" role="tab" aria-selected="true">Movies</a>
+                       </li>
+                       <li class="nav-item">
+                          <a class="nav-link" data-toggle="pill" href="#tv_show" role="tab" aria-selected="false">Series</a>
+                       </li>
+                    </ul>
+                    <div class="tab-content cast-person-list" id="cast-person-list">
+
+                       <div  id="movie" active class="tab-pane fade active show streamit_cast_list" role="tabpanel" data-attibute="movie" data-current-page="1" data-options="infinite_scroll">
+                          <table class="credit_group animated fadeInUp">
+                             <tbody class="cast-related-list">
+                              <ng-container *ngFor="let item of this.crewseriesmovieService.GetAllx">
+                                <ng-container *ngFor="let i of this.movieService.GetAllx">
+                                <ng-container *ngIf="this.crewService.GetxById.id == item.crewid && i.id == item.movieid">
+
+                                <tr class="trending-pills" >
+                                   <td class="image"><img src="../../../assets/Image/{{i.image}}" class="img-fluid" alt="wp-rig" loading="lazy"></td>
+                                   <td class="content">
+                                      <a (click)="Navigate(i.id)" class="text-primary">
+                                        {{i.name}} </a>
+
+                                   </td>
+                                   <td class="year">{{i.productionyear}}</td>
+                                </tr>
+                                </ng-container>                                </ng-container>
+                              </ng-container>
+
+                             </tbody>
+                          </table>
+                       </div>
+                       <div id="tv_show" class="tab-pane fade streamit_cast_list" role="tabpanel" data-attibute="tv_show" data-current-page="1" data-options="infinite_scroll">
+                          <table class="credit_group animated fadeInUp">
+                             <tbody class="cast-related-list">
+                              <ng-container *ngFor="let item of this.crewseriesmovieService.GetAllx">
+                                <ng-container *ngFor="let i of this.seriesService.GetAllx">
+                                <ng-container *ngIf="this.crewService.GetxById.id == item.crewid && i.id == item.seriesid">
+                                <tr class="trending-pills">
+                                   <td class="image"><img src="../../../assets/Image/{{i.image}}" class="img-fluid" alt="wp-rig" loading="lazy"></td>
+                                   <td class="seperator">1</td>
+                                   <td class="content">
+                                      <a (click)="NavigateSer(i.id)" class="text-primary">
+                                        {{i.name}}                                                    </a>
+                                   </td>
+                                   <td class="year">{{i.productionyear}}</td>
+                                </tr>
+                              </ng-container> </ng-container> </ng-container>
+                             </tbody>
+                          </table>
+                       </div>
+
+                    </div>
+                 </div>
+           </div>
+     </div>
+     </div>
+</main>
+<!-- Footer Start -->
+<app-homefooter></app-homefooter>
+<!-- Footer End -->
+
+
+

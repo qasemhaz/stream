@@ -1,0 +1,94 @@
+<!-- loader Start -->
+<!-- <div id="loading">
+  <div id="loading-center">
+  </div>
+</div> --><ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "small" color = "#fff" type = "ball-scale-multiple" [fullScreen] = "true" template = " <img src='../../../assets/StreamAssets/images/loader-unscreen.gif' /> "></ngx-spinner>
+
+<!-- loader END -->
+<!-- Header -->
+<app-homeheader></app-homeheader>
+<!-- Header End -->
+<main id="main" class="genres-main">
+
+  <section class="iq-genres-section">
+     <div class="container-fluid">
+
+        <div class="input-group" style="justify-content: center;">
+          <div class="form-outline">
+            <input type="search"[(ngModel)]="searchTerm" id="form1"placeholder="Enter your search term" class="form-control" />
+          </div>
+          <button type="button"(click)="search()" class="btn btn-primary">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+
+
+                  <ul class=" row list-inline  mb-0 iq-rtl-direction ">
+                    <li *ngFor="let result of searchResults"  class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                      <a (click)="Navigate(result.id)">
+                        <div class="iq-tag-box watchlist-first">
+                           <span class="iq-tag ">{{result.name}}</span>
+                        </div>
+                     </a>
+
+
+                    </li>
+                    <hr>
+        <br><br><br>            <hr>
+                  </ul>
+                  <div class="iq-main-header d-flex align-items-center justify-content-between mt-5 mt-lg-0">
+                    <h4 class="main-title"style="background-color: black;
+                    padding: 15px;
+                    width: 100%;"> All Category</h4>
+                 </div>
+        <ul class=" row mb-0 list-inline">
+          <ng-container *ngFor="let item of categoryService.GetAllCategoryv; let i = index">
+           <li *ngIf="i<12" class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+              <a (click)="Navigate(item.id)">
+                 <div class="iq-tag-box watchlist-first">
+                    <span class="iq-tag ">{{item.name}}</span>
+                 </div>
+              </a>
+           </li>
+          </ng-container>
+
+        </ul>
+        <button class="btn btn-hover hide-me" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              <span class="genres-btn">LOAD MORE</span>
+        </button>
+        <div class="collapse" id="collapseExample">
+           <div class="">
+              <ul class="row mb-0 list-inline">
+                <ng-container *ngFor="let item of categoryService.GetAllCategoryv; let i = index">
+
+                 <li *ngIf="i>11" class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
+                    <a (click)="Navigate(item.id)">
+                       <div class="iq-tag-box watchlist-first">
+                          <span class="iq-tag ">{{item.name}}</span>
+                       </div>
+                    </a>
+                 </li>
+                </ng-container>
+
+              </ul>
+           </div>
+        </div>
+     </div>
+  </section>
+
+
+  <app-homefooter></app-homefooter>
+</main>
+<div class="rtl-box">
+  <button type="button" id="flip"  class="btn btn-light rtl-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 20 20" fill="white">
+        <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+        </svg>
+  </button>
+  <div class="rtl-panel" id="panel">
+     <ul class="modes">
+        <li class="dir-btn"  data-mode="rtl" data-active="false" data-value="ltr"><a href="#">LTR</a></li>
+        <li class="dir-btn" data-mode="rtl" data-active="true"   data-value="rtl"><a href="#">RTL</a></li>
+     </ul>
+  </div>
+</div>
